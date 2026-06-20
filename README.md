@@ -1,105 +1,54 @@
-# CareerPortfolio: Data-Driven Astro SSG
-Live Demo: [careerportofio.netlify.app](https://careerportofio.netlify.app)
+﻿# Portfolio Personal
 
-[![Astro](https://img.shields.io/badge/Astro-FF5D01?logo=astro&logoColor=white)](https://astro.build/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![Contributions Welcome](https://img.shields.io/badge/🤝_Contributions-Welcome-blue)](CONTRIBUTING.md)
+Portfolio personal construido con Astro y Tailwind CSS.
 
-A high-performance, responsive portfolio built with **Astro**, **Tailwind CSS**, and **Native Browser Animations**. Designed to be 100% data-driven and easy to customize as a reusable template.
+## Tecnologías utilizadas
+- **Astro** como framework para generar el sitio estático.
+- **Tailwind CSS** para el diseño responsivo y utilidades de estilo.
+- **TypeScript** para la configuración del proyecto.
+- **astro-icon** + **Iconify** para los iconos.
+- **CSS personalizado** en `src/styles/global.css`.
+- **JSON-driven content** con archivos en `src/data/`.
 
-## 🌟 Highlights
-- **Zero-JS by Default:** Leveraging Astro's islands architecture.
-- **JSON-First:** Update your information in `src/data/` without touching any code.
-- **Built-in Themes**: Switch between multiple professional color palettes and light/dark modes from a single config file.
-- **Fully Responsive:** Optimized for mobile, tablet, and desktop.
-- **Performance:** Optimized for perfect Lighthouse scores.
+## Qué incluye
+- Página principal con presentación personal.
+- Sección de proyectos con tarjetas dinámicas.
+- Sección de experiencia laboral y habilidades.
+- Tema claro/oscuro con toggle.
+- Animación de fondo habilitada en `src/layouts/Layout.astro`.
+- Diseño responsive para móvil, tablet y escritorio.
 
-## 🛠️ Tech Stack
-- **Frontend:** [Astro](https://astro.build/) (Static Site Generation)
-- **Styling:** [Tailwind CSS](https://tailwindcss.com/)
-- **Icons:** [Iconify](https://iconify.design/) via `astro-icon`
-- **Deployment:** [Netlify](https://www.netlify.com)
-- **Backend:** [FastAPI](https://fastapi.tiangolo.com/) *(Works without backend — open source release coming soon)*
+## Cómo ejecutar localmente
+1. Clona el repositorio.
+2. Entra en la carpeta del proyecto:
+   ```bash
+   cd portfolio-a
+   ```
+3. Instala dependencias:
+   ```bash
+   npm install
+   ```
+4. Inicia el servidor de desarrollo:
+   ```bash
+   npm run dev -- --host
+   ```
+5. Abre `http://localhost:4173` en tu navegador.
 
-## 🚀 Getting Started
-Follow these instructions to get a local copy up and running.
+## Comandos útiles
+- `npm install` — Instala dependencias.
+- `npm run dev -- --host` — Inicia el servidor de desarrollo.
+- `npm run build` — Genera la versión de producción.
+- `npm run preview` — Previsualiza la versión de producción localmente.
 
-### Prerequisites
-Make sure you have **Astro v6** and **Node.js** (v22.12.0 or higher) installed on your machine.
+## Archivos importantes
+- `src/pages/index.astro` — Página principal.
+- `src/layouts/Layout.astro` — Layout global y animación de fondo.
+- `src/components/` — Componentes reutilizables.
+- `src/data/` — Contenido editable en JSON.
+- `src/config.ts` — Configuración del sitio.
+- `src/styles/global.css` — Estilos globales personalizados.
 
-### Installation
-1. Click **Use this template** on this repository.
-2. Choose **Create a new repository**.
-3. Clone your new repository: `git clone <your-repo-url>`
-4. Navigate to your repo: `cd <your-repo-name>`
-5. Install dependencies: `npm install`
-6. Start development server: `npm run dev`
-7. Update your content in `/src/data/`
-8. Build and deploy on your preferred platform
+## Personalización
+Edita los archivos en `src/data/` para actualizar tus datos, proyectos y habilidades.
 
-
-## 🛠️ How to Customize
-To make this portfolio yours, simply edit the JSON files in `src/data/`.
-
-### 🎨 Switching Themes
-This template comes with multiple built-in color palettes. To change the theme of your portfolio, open `src/config.ts` and update the `baseTheme` variable to one of the available options:
-
-```typescript
-export const SITE_CONFIG = {
-  // Options: 'default', 'strategic', 'innovator', 'executive'
-  baseTheme: 'default', 
-};
-```
-*(The template will automatically handle the dark/light mode toggles for whichever base theme you choose!)*
-
-### 📁 Directory Structure
-```
-├── public/              # Global static assets (placeholder.jpg, favicon)
-├── src/
-│   ├── assets/          # Project & Profile images (Supports automatic Astro optimization)
-│   ├── components/      # Reusable Astro components
-│   ├── data/            # JSON files for project data
-│   ├── layouts/         # Layout templates with Meta tags
-│   ├── pages/           # Site routes (index.astro)
-│   └── styles/          # global css styles
-│   └── config.ts        # Global site configuration
-├── astro.config.mjs     # Astro configuration
-└── tsconfig.json        # Typescript configuration
-```
-
-
-
-
-#### Useful commands and links for reference:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-Tailwind CSS: `npx astro add tailwind`
-
-Inter font: `npm install @fontsource-variable/inter` 
-
-Space Grotesk font: `npm install @fontsource-variable/space-grotesk`
-
-Astro-icon: `npx astro add astro-icon`
-
-Material Desing Icons: `npm install @iconify-json/mdi`
-
-https://docs.astro.build/en/guides/styling/#add-tailwind-4
-
-https://www.astroicon.dev
-
-https://icon-sets.iconify.design/mdi/?category=Material
-
-## 🤝 Contributing
-Contributions are welcome!  
-Please read the [Contributing Guide](CONTRIBUTING.md) before opening a PR.
-
-## 📝 License
-This project is licensed under the [MIT License](LICENSE)
+Proyecto cargado en: https://github.com/AgustinG1/Portfolio1
