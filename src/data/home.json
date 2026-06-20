@@ -1,72 +1,29 @@
 {
-  "name": "John Doe",
-  "photoUrl": "favicon.svg",
-  "intro": "A brief, compelling introduction about who you are and what you do. Mention your core philosophy, your passion for building digital products, and your drive for creating efficient, high-impact solutions.",
-  "introHtml": "A brief, compelling introduction about who you are and what you do. Mention your core <span class='text-white font-bold'>philosophy</span>, your passion for building digital products, and your drive for creating <span class='text-white font-bold'>efficient</span>, <span class='text-white font-bold'>high-impact</span> solutions.",
-  "webpageTitle": "John Doe",
-  "resumeUrl": "https://example-files.online-convert.com/document/pdf/example.pdf",
-
+  "name": "Alberto Agustín García",
+  "photoUrl": "perfil.jpeg",
+  "intro": "Soy estudiante de <strong>Analista Programador Computacional</strong> en <strong>Duoc UC</strong>, con un fuerte enfoque en el desarrollo backend utilizando <strong>Java</strong>, <strong>Spring Boot</strong> y <strong>bases de datos relacionales</strong>. Inicié mi camino en la tecnología de forma autodidacta en 2022, tras haber trabajado varios años en el sector gastronómico y hotelero. Esa experiencia me aportó sólidas bases en el trabajo en equipo, la resolución de problemas y una gran adaptabilidad. Originario de Argentina y radicado en Chile hace 3 años, actualmente busco mi primera oportunidad profesional para aportar valor en el sector tecnológico.",
+  "introHtml": "",
+  "webpageTitle": "Portfolio | Alberto Agustín",
+  "resumeUrl": "#",
   "_comment": "Add your social links below. Leave the 'url' empty to hide the icon. Set 'showInContact' to true or false to control if it appears in the Contact section.",
   "socials": [
     {
       "name": "GitHub",
-      "url": "https://github.com/[YOUR_USER_NAME]",
+      "url": "https://github.com/AgustinG1",
       "icon": "mdi:github",
       "showInContact": true
     },
     {
       "name": "LinkedIn",
-      "url": "https://linkedin.com/in/[YOUR_USER_NAME]",
+      "url": "https://www.linkedin.com/in/alberto-agust%C3%ADn-garc%C3%ADa-0105b325b/",
       "icon": "mdi:linkedin",
       "showInContact": true
     },
     {
-      "name": "Leetcode",
-      "url": "#",
-      "icon": "devicon-plain:leetcode",
-      "showInContact": false
-    },
-    {
-      "name": "Behance",
-      "url": "#",
-      "icon": "devicon-plain:behance",
-      "showInContact": false
-    },
-    {
       "name": "Email",
-      "url": "mailto:your-mail@example.com",
+      "url": "mailto:aagustingarcia13@gmail.com",
       "icon": "mdi:email",
       "showInContact": true
-    },
-    {
-      "name": "Whatsapp",
-      "url": "https://wa.me/[YOUR_WHATSAPP_NUMBER]",
-      "icon": "mdi:whatsapp",
-      "showInContact": true
-    },
-    {
-      "name": "Facebook",
-      "url": "#",
-      "icon": "mdi:facebook",
-      "showInContact": false
-    },
-    {
-      "name": "Messenger",
-      "url": "#",
-      "icon": "mdi:facebook-messenger",
-      "showInContact": true
-    },
-    {
-      "name": "Instagram",
-      "url": "#",
-      "icon": "mdi:instagram",
-      "showInContact": false
-    },
-    {
-      "name": "Twitter",
-      "url": "#",
-      "icon": "mdi:twitter",
-      "showInContact": false
     }
   ]
 }

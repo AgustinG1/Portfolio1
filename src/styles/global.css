@@ -4,7 +4,7 @@
 
 @theme {
   /* Base Colors - Theme used in @layer base{...} */
-  --color-background: #0F0D29;
+  --color-background: #050A07;
   --color-accent: #A78BFA;
   --color-maintext: #FFFFFF;
   --color-subtext: #b2bed1;
@@ -41,20 +41,20 @@
   /* Default Theme - Dark */
   :root,
   [data-theme="default-dark"] {
-    --color-background: #0F0D29;
-    --color-accent: #A78BFA;
+    --color-background: #0B150F;
+    --color-accent: #009940;
     --color-maintext: #FFFFFF;
-    --color-subtext: #b2bed1;
-    --color-textrain: #7d7b9c;
+    --color-subtext: #9CB0A5;
+    --color-textrain: #BA9653;
   }
 
   /* Default Theme - Light */
   [data-theme="default-light"] {
-    --color-background: #F5F3FF;
-    --color-accent: #7C3AED;
-    --color-maintext: #1E1B4B;
-    --color-subtext: #4B5563;
-    --color-textrain: #97a7dc;
+    --color-background: #F9FBF9;
+    --color-accent: #007A33;
+    --color-maintext: #0A1F13;
+     --color-subtext: #3d4c44;
+    --color-textrain: #963821;
   }
 
   /* Strategic Architect - Dark */
@@ -119,12 +119,10 @@
 
   body {
     @apply font-body antialiased text-maintext;
-    background: linear-gradient(
-      135deg,    
-      color-mix(in srgb, var(--color-background), black 16%) 0%,
-      var(--color-background) 50%,
-      color-mix(in srgb, var(--color-background), white 16%) 100%
-    );
+    background-color: var(--color-background);
+    background-image:
+      radial-gradient(circle at top, color-mix(in srgb, var(--color-accent), transparent 90%), transparent 42%),
+      linear-gradient(135deg, color-mix(in srgb, var(--color-background), white 2%), color-mix(in srgb, var(--color-background), black 6%));
     background-attachment: fixed;
     min-height: 100vh;
     /*Transition for theme switching*/

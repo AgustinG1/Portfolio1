@@ -1,20 +1,20 @@
 [
   {
-    "title": "Awesome Website",
-    "description": "A high-performance, SEO-optimized web application built with modern frameworks to showcase technical expertise.",
-    "images": ["astro-01.webp", "astro-02.jpeg"],
-    "tech": ["Astro", "Tailwind"],
+    "title": "Burger Fenix",
+    "description": "Landing estática para un restaurante de hamburguesas, con un diseño visual limpio, secciones claras y animaciones sutiles. Presenta el menú, la ubicación y el contacto en un formato responsive.",
+    "images": ["ProjectFenix1.png", "ProjectFenix2.png"],
+    "tech": ["HTML", "CSS", "Sass", "Bootstrap"],
     "platforms": ["web"],
-    "link": "https://astro.build/themes/details/career-portfolio-data-driven-astro-ssg/",
+    "link": "https://loquacious-taffy-1ff1e0.netlify.app/",
     "category": "Published Website"
   },
   {
-    "title": "Demo Mobile App",
-    "description": "A high-performance mobile application built with modern frameworks to showcase technical expertise.",
-    "images": ["astro-02.jpeg", "#"],
-    "tech": ["Flutter", "Dart", "REST API"],
-    "platforms": ["apple-ios", "android"],
-    "link": "https://github.com/nbakh16/career-portfolio-template",
+    "title": "TaskScheduler",
+    "description": "Una aplicación móvil para programar y gestionar tareasd de manera eficiente sin repeticiones.",
+    "images": ["task1.png", "task2.png"],
+    "tech": ["Spring Boot", "Java", "MySQL", "thymeleaf", "Docker", "Lombok", "Spring Data JPA", "Hibernate", "Maven"],
+    "platforms": ["web"],
+    "link": "https://task-scheduler-app-demo-0-2.onrender.com/",
     "category": "Hobby"
   }
 ]
