@@ -1,7 +1,7 @@
 [
   {
     "title": "Burger Fenix",
-    "description": "Landing estática para un restaurante de hamburguesas, con un diseño visual limpio, secciones claras y animaciones sutiles. Presenta el menú, la ubicación y el contacto en un formato responsive.",
+    "description": "Landing estática para un restaurante de hamburguesas, con un diseño visual limpio, secciones claras y animaciones sutiles. Presenta el menú, la ubicación y el contacto en un formato moderno y responsive.",
     "images": ["ProjectFenix1.png", "ProjectFenix2.png"],
     "tech": ["HTML", "CSS", "Sass", "Bootstrap"],
     "platforms": ["web"],
@@ -16,5 +16,15 @@
     "platforms": ["web"],
     "link": "https://task-scheduler-app-demo-0-2.onrender.com/",
     "category": "Hobby"
+  },
+  {
+    "title": "Blog de Recetas",
+    "description": "Aplicación web responsive para explorar recetas caseras por categorías, ver detalles de cada receta y gestionar contenido con inicio de sesión.",
+    "images": ["blogrecetapy1.png", "blogrecetapy2.png"],
+    "tech": ["React", "Node.js", "MongoDB", "Express", "Responsive Design"],
+    "platforms": ["web"],
+    "link": "https://blogrecetapy.onrender.com/",
+    "category": "Full Stack Web App",
+    "github": "https://github.com/AgustinG1/BlogRecetaPy"
   }
 ]

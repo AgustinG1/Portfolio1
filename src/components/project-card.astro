@@ -56,9 +56,16 @@ const isSlider = validImages.length > 1;
         <span class="text-accent text-[10px] uppercase tracking-widest font-bold">{project.category}</span>
         <h3 class="text-xl font-heading font-bold text-maintext mt-1 break-words">{project.title}</h3>
       </div>
-      <a href={project.link} target="_blank" class="shrink-0 text-accent/75 hover:text-accent transition-colors">
-        <Icon name="mdi:open-in-new" class="w-6 h-6" />
-      </a>
+      <div class="shrink-0 flex items-center gap-2">
+        {project.github && (
+          <a href={project.github} target="_blank" rel="noopener noreferrer" class="text-accent/75 hover:text-accent transition-colors" aria-label={`GitHub repo for ${project.title}`}>
+            <Icon name="mdi:github" class="w-6 h-6" />
+          </a>
+        )}
+        <a href={project.link} target="_blank" rel="noopener noreferrer" class="text-accent/75 hover:text-accent transition-colors" aria-label={`Live site for ${project.title}`}>
+          <Icon name="mdi:open-in-new" class="w-6 h-6" />
+        </a>
+      </div>
     </div>
 
     <p class="text-subtext text-sm leading-relaxed text-pretty font-body">
