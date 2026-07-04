@@ -1,7 +1,7 @@
 [
   {
     "title": "Burger Fenix",
-    "description": "Landing estática para un restaurante de hamburguesas, con un diseño visual limpio, secciones claras y animaciones sutiles. Presenta el menú, la ubicación y el contacto en un formato moderno y accesible.",
+    "description": "Landing estática para un restaurante de hamburguesas, con un diseño visual limpio, secciones claras y animaciones sutiles. Presenta el menú, la ubicación y el contacto en un[...]",
     "images": ["ProjectFenix1.png", "ProjectFenix2.png"],
     "tech": ["HTML", "CSS", "Sass", "Bootstrap"],
     "platforms": ["web"],
@@ -15,11 +15,12 @@
     "tech": ["Spring Boot", "Java", "MySQL", "thymeleaf", "Docker", "Lombok", "Spring Data JPA", "Hibernate", "Maven"],
     "platforms": ["web"],
     "link": "https://task-scheduler-app-demo-0-2.onrender.com/",
-    "category": "Hobby"
+    "category": "Hobby",
+    "github": "https://github.com/AgustinG1/task-scheduler-DEMO-0.2"
   },
   {
     "title": "Blog de Recetas",
-    "description": "Blog de recetas donde los usuarios pueden explorar recetas caseras por categorías y ver el detalle de cada receta. Para añadir una receta es necesario registrarse e iniciar sesión.",
+    "description": "Blog de recetas donde los usuarios pueden explorar recetas caseras por categorías y ver el detalle de cada receta. Para añadir una receta es necesario registrarse e iniciar s[...]",
     "images": ["Blog-1.png", "Blog-2.png"],
     "tech": ["Django", "Python", "HTML", "Bootstrap", "CKEditor"],
     "platforms": ["web"],
