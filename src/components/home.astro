@@ -38,8 +38,11 @@ if (isApiLive && BASE_URL) {
   data = localData as ProfileData;
 }
 
-const { name, photoUrl, intro, introHtml, resumeUrl, socials } = data;
+const { name, photoUrl, resumeUrl, socials } = data;
 const profileImage = await resolveAssetImage(photoUrl);
+
+// Keep the reviewed portfolio biography consistent in development and production.
+const renderedIntro = localData.intro;
 ---
 
 <section id="home" class="flex flex-col items-center justify-center section-container md:pt-30 gap-1 min-h-[80vh] text-center">
@@ -79,7 +82,7 @@ const profileImage = await resolveAssetImage(photoUrl);
     <br>
     <p 
       class="text-gray font-body text-lg leading-relaxed" 
-      set:html={intro} 
+      set:html={renderedIntro}
     />
   </div>
 
