@@ -10,12 +10,23 @@
   },
   {
     "title": "TaskScheduler",
-    "description": "Una aplicación móvil para programar y gestionar tareasd de manera eficiente sin repeticiones.",
-    "images": ["task1.png", "task2.png"],
-    "tech": ["Spring Boot", "Java", "MySQL", "thymeleaf", "Docker", "Lombok", "Spring Data JPA", "Hibernate", "Maven"],
+    "description": "Aplicación web para organizar áreas, personal y equipos y generar planillas de hasta 52 semanas según compatibilidad y rotación. Incluye registro e inicio de sesión con Auth0, datos privados por usuario, historial y exportación a Excel. El planificador utiliza el algoritmo húngaro para priorizar la cobertura y reducir repeticiones. Desplegada en Render con MySQL en Aiven.",
+    "images": ["task-panel.png", "task-acceso.png", "task-historial.png"],
+    "imageFit": "contain",
+    "imageAlts": ["TaskScheduler: panel con módulos y esquema de asignación de tareas", "TaskScheduler: acceso personal y registro mediante Auth0", "TaskScheduler: historial de planillas con descarga de Excel"],
+    "tech": [
+      "Java 17", "Spring Boot", "Spring MVC", "Spring Security",
+      "Spring Data JPA", "Hibernate", "Jakarta Validation", "Lombok",
+      "Thymeleaf", "HTML", "CSS", "JavaScript", "Bootstrap 5", "Bootstrap Icons",
+      "Auth0", "OAuth 2.0", "OpenID Connect",
+      "SQL", "MySQL", "H2", "Apache POI",
+      "JUnit", "Spring Boot Test", "MockMvc", "Spring Security Test",
+      "Maven", "Docker", "Docker Compose", "Git", "GitHub", "PowerShell",
+      "Render", "Aiven"
+    ],
     "platforms": ["web"],
     "link": "https://task-scheduler-app-demo-0-2.onrender.com/",
-    "category": "Hobby",
+    "category": "Full Stack Web App",
     "github": "https://github.com/AgustinG1/task-scheduler-DEMO-0.2"
   },
   {

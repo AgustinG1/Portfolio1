@@ -26,8 +26,8 @@ const isSlider = validImages.length > 1;
           validImages.map((imgMetadata, index) => (
             <Image
               src={imgMetadata}
-              alt={`${project.title}`}
-              class={`absolute inset-0 w-full h-full object-cover transition-all duration-1000 group-hover:scale-110 ${index === 0 ? "opacity-100 z-0" : "opacity-0 z-[-1]"}`}
+              alt={project.imageAlts?.[index] ?? project.title}
+              class={`absolute inset-0 w-full h-full ${project.imageFit === 'contain' ? 'object-contain bg-[#0a0a0a]' : 'object-cover group-hover:scale-110'} transition-all duration-1000 ${index === 0 ? "opacity-100 z-0" : "opacity-0 z-[-1]"}`}
             />
           ))
         ) : (
