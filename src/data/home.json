@@ -1,10 +1,10 @@
 {
   "name": "Alberto Agustín García",
   "photoUrl": "perfil.jpeg",
-  "role": "Desarrollador backend Java / Spring Boot",
+  "role": "Desarrollador backend",
   "location": "Chile",
-  "availability": "Busco mi primera oportunidad como desarrollador backend",
-  "intro": "Estudio <strong>Analista Programador Computacional en Duoc UC</strong> y desarrollo aplicaciones con Java, Spring Boot y bases de datos relacionales. Mi experiencia en gastronomía y hotelería me aportó trabajo en equipo, adaptabilidad y resolución de problemas.",
+  "availability": "Disponible",
+  "intro": "Soy estudiante de <strong>Analista Programador Computacional en Duoc UC</strong> y construyo aplicaciones backend con <strong>Java, Spring Boot y MySQL</strong>. Antes de programar trabajé varios años en gastronomía y hotelería; en 2022 empecé por mi cuenta.",
   "introHtml": "",
   "webpageTitle": "Portafolio | Alberto Agustín",
   "resumeUrl": "CV_Alberto_Agustin_Garcia.pdf",

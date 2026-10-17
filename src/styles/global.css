@@ -13,6 +13,7 @@
   /* Fonts */
   --font-heading: "Space Grotesk Variable", sans-serif;
   --font-body: "Inter Variable", sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Consolas, monospace;
 
   /* Custom Animations */
   --animate-fall: fall linear forwards;
@@ -42,7 +43,7 @@
   :root,
   [data-theme="default-dark"] {
     --color-background: #0B150F;
-    --color-accent: #009940;
+    --color-accent: #56CF8A;
     --color-maintext: #FFFFFF;
     --color-subtext: #9CB0A5;
     --color-textrain: #BA9653;
@@ -158,4 +159,37 @@
 }
 ::-webkit-scrollbar-thumb:hover {
   background-color: color-mix(in srgb, var(--color-accent), transparent 25%);
+}
+
+/* Shared surfaces and actions keep both themes readable. */
+:root {
+  --surface: #101e16;
+  --surface-border: #304b3a;
+  --surface-hover: #233b2c;
+  --surface-shadow: 0 8px 26px rgb(0 0 0 / 12%);
+}
+[data-theme$="-light"] {
+  --surface: #ffffff;
+  --surface-border: #d5ddd8;
+  --surface-hover: #e8f1eb;
+  --surface-shadow: 0 6px 22px rgb(18 45 28 / 6%);
+}
+html { scroll-behavior: smooth; }
+main section[id] { scroll-margin-top: 6.5rem; }
+.portfolio-surface { background-color: var(--surface); border-color: var(--surface-border); box-shadow: var(--surface-shadow); }
+.primary-button { color: #fff; background-color: #08783e; border: 2px solid #08783e; box-shadow: 0 4px 12px rgb(0 0 0 / 12%); transition: background-color .2s, border-color .2s; }
+.primary-button:hover { color: #fff; background-color: #065c30; border-color: #065c30; }
+.secondary-button { color: var(--color-maintext); border: 1px solid var(--surface-border); background: var(--surface); }
+.secondary-button:hover { background: var(--surface-hover); border-color: var(--color-subtext); }
+.eyebrow { font-family: var(--font-mono); font-size: 12px; line-height: 1.6; font-weight: 600; text-transform: uppercase; letter-spacing: .09em; }
+a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 4px; }
+@media (max-width: 767px) {
+  body { padding-bottom: calc(5rem + env(safe-area-inset-bottom)); }
+  main section[id] { scroll-margin-top: 1.5rem; }
+  #main-nav { padding-bottom: env(safe-area-inset-bottom); }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+  #matrix-container { display: none; }
 }

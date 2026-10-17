@@ -3,7 +3,7 @@ import { Icon } from 'astro-icon/components';
 import techData from '../data/tech.json';
 
 // Use the reviewed categories consistently in development and production.
-const { categories } = techData;
+const { categories, primaryStack } = techData;
 ---
 
 <section id="tech" class="section-container">
@@ -13,25 +13,26 @@ const { categories } = techData;
         <span class="text-accent">/</span> Tecnologías y herramientas
       </h2>
       <p class="text-subtext font-body text-sm max-w-md">
-        Tecnologías con las que trabajo en mis proyectos y formación.
+        Mi stack principal es Java, Spring Boot y MySQL. También trabajo con estas tecnologías.
       </p>
     </div>
 
     <div class="space-y-8">
       {categories.map((category) => (
         <div class="space-y-3">
-          <h3 class="text-maintext font-body text-xs font-semibold uppercase tracking-widest">
+          <h3 class="eyebrow text-maintext">
             {category.title}
           </h3>
           <ul class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3" aria-label={category.title}>
             {category.skills.map((skill) => (
-              <li class="group min-w-0 flex items-center gap-3 rounded-xl border border-accent/15 bg-accent/5 p-3 transition-colors hover:border-accent/40 hover:bg-accent/10">
-                <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-accent/10" aria-hidden="true">
+              <li data-primary={primaryStack.includes(skill.name) ? 'true' : undefined} class="skill-card portfolio-surface group min-w-0 flex flex-col items-center gap-3 rounded-xl border p-3 transition-colors hover:border-accent/60 sm:flex-row">
+                <span class="icon-tile flex h-11 w-11 shrink-0 items-center justify-center rounded-lg" aria-hidden="true">
                   <Icon name={skill.icon} class="h-7 w-7" />
                 </span>
-                <span class="min-w-0 break-words font-body text-maintext text-[13px] leading-5 font-medium">
-                  {skill.name}
-                </span>
+                <div class="min-w-0 w-full text-center sm:w-auto sm:text-left">
+                  <span class="block break-words font-body text-maintext text-sm leading-5 font-medium">{skill.name}</span>
+                  {primaryStack.includes(skill.name) && <span class="mt-1 block break-words font-mono text-xs text-accent">Stack principal</span>}
+                </div>
               </li>
             ))}
           </ul>
@@ -40,3 +41,8 @@ const { categories } = techData;
     </div>
   </div>
 </section>
+
+<style>
+  .icon-tile { background: #f2f6f3; color: #153f28; }
+  .skill-card[data-primary] { border: 2px solid var(--color-accent); padding: 11px; }
+</style>

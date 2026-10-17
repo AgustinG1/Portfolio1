@@ -7,16 +7,18 @@ const { project } = Astro.props;
 const images = await Promise.all(project.images.map(async (name: string, index: number) => ({
   image: await resolveAssetImage(name),
   alt: project.imageAlts?.[index] ?? `${project.title}: captura ${index + 1}`,
+  zoom: project.imageZoom?.[index] ?? 1,
+  origin: project.imageOrigin?.[index] ?? 'center',
 })));
 const validImages = images.filter(item => item.image !== null);
 const featuredTech: string[] = project.featuredTech ?? project.tech.slice(0, 10);
 const otherTech: string[] = project.tech.filter((tech: string) => !featuredTech.includes(tech));
 ---
 
-<article class="project-card group min-w-0 flex h-full flex-col overflow-hidden rounded-2xl border border-accent/15 bg-accent/5 transition-colors hover:border-accent/40">
+<article class="project-card portfolio-surface group min-w-0 flex h-full flex-col overflow-hidden rounded-2xl border transition-colors hover:border-accent/60">
   <div class="project-gallery relative shrink-0 border-b border-accent/10" aria-label={`Capturas de ${project.title}`}>
     <div class="relative aspect-video overflow-hidden bg-background/50">
-      {validImages.length ? validImages.map(({ image, alt }, index) => image && (
+      {validImages.length ? validImages.map(({ image, alt, zoom, origin }, index) => image && (
         <Image
           src={image}
           alt={alt}
@@ -24,6 +26,7 @@ const otherTech: string[] = project.tech.filter((tech: string) => !featuredTech.
           data-full-src={image.src}
           hidden={index !== 0}
           class={`h-full w-full ${project.imageFit === 'contain' ? 'object-contain bg-[#0a0a0a]' : 'object-cover object-top'}`}
+          style={{ transform: `scale(${zoom})`, transformOrigin: origin }}
           widths={[400, 800, 1200]}
           sizes="(min-width: 768px) 50vw, 100vw"
         />
@@ -65,7 +68,7 @@ const otherTech: string[] = project.tech.filter((tech: string) => !featuredTech.
 
   <div class="flex flex-1 flex-col gap-4 p-5 lg:p-6">
     <header>
-      <p class="text-[10px] font-bold uppercase tracking-widest text-accent">{project.category}</p>
+      <p class="eyebrow text-accent">{project.category}</p>
       <h3 class="mt-2 break-words font-heading text-2xl font-bold leading-tight text-maintext">{project.title}</h3>
     </header>
     <div class="text-sm leading-6 text-subtext">
@@ -79,7 +82,7 @@ const otherTech: string[] = project.tech.filter((tech: string) => !featuredTech.
     </div>
 
     <div class="mt-auto border-t border-accent/15 pt-4 md:min-h-40">
-      <p class="mb-3 text-[10px] font-semibold uppercase tracking-widest text-subtext">Tecnologías</p>
+      <p class="eyebrow mb-3 text-subtext">Tecnologías</p>
       <ul class="flex flex-wrap gap-2" aria-label={`Tecnologías principales de ${project.title}`}>
         {featuredTech.map((tech: string) => <li class="tech-tag">{tech}</li>)}
       </ul>
@@ -94,11 +97,11 @@ const otherTech: string[] = project.tech.filter((tech: string) => !featuredTech.
     </div>
 
     <footer class="mt-1 flex flex-wrap gap-2 border-t border-accent/15 pt-4">
-      <a href={project.link} target="_blank" rel="noopener noreferrer" class="project-link bg-accent text-background" aria-label={`Ver demo de ${project.title} (abre otra pestaña)`}>
+      <a href={project.link} target="_blank" rel="noopener noreferrer" class="project-link primary-button flex-1" aria-label={`Ver demo de ${project.title} (abre otra pestaña)`}>
         Ver demo <Icon name="mdi:open-in-new" class="h-4 w-4" />
       </a>
       {project.github && (
-        <a href={project.github} target="_blank" rel="noopener noreferrer" class="project-link border border-accent/25 text-maintext hover:bg-accent/10" aria-label={`Ver código de ${project.title} en GitHub (abre otra pestaña)`}>
+        <a href={project.github} target="_blank" rel="noopener noreferrer" class="project-link secondary-button flex-1" aria-label={`Ver código de ${project.title} en GitHub (abre otra pestaña)`}>
           <Icon name="mdi:github" class="h-4 w-4" /> Código
         </a>
       )}
@@ -144,7 +147,7 @@ const otherTech: string[] = project.tech.filter((tech: string) => !featuredTech.
     border: 1px solid color-mix(in srgb, var(--color-accent), transparent 82%);
     border-radius: 6px;
     padding: 4px 8px;
-    font-size: 11px;
+    font-size: 13px;
     line-height: 1.5;
     color: var(--color-maintext);
     background: color-mix(in srgb, var(--color-accent), transparent 94%);
@@ -162,8 +165,8 @@ const otherTech: string[] = project.tech.filter((tech: string) => !featuredTech.
   }
   .gallery-button { color: var(--color-subtext); }
   .gallery-button:hover { color: var(--color-maintext); background: color-mix(in srgb, var(--color-accent), transparent 90%); }
-  .project-link { padding: 8px 14px; font-size: 13px; font-weight: 600; }
-  .detail-toggle { cursor: pointer; padding-block: 10px; font-size: 12px; font-weight: 500; color: var(--color-accent); }
+  .project-link { padding: 10px; font-size: 14px; font-weight: 600; white-space: nowrap; }
+  .detail-toggle { cursor: pointer; padding-block: 10px; font-size: 14px; font-weight: 500; color: var(--color-accent); }
   a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 4px; }
   .image-dialog::backdrop { background: rgb(0 0 0 / 80%); }
   .project-gallery [hidden] { display: none; }

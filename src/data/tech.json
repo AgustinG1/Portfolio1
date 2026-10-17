@@ -1,4 +1,5 @@
 {
+  "primaryStack": ["Java", "Spring Boot", "MySQL"],
   "categories": [
     {
       "title": "Desarrollo de interfaces",
@@ -7,23 +8,23 @@
         { "name": "CSS", "icon": "skill-icons:css" },
         { "name": "JavaScript", "icon": "skill-icons:javascript" },
         { "name": "React", "icon": "skill-icons:react-dark" },
-        { "name": "Bootstrap", "icon": "skill-icons:bootstrap" },
-        { "name": "Thymeleaf", "icon": "devicon:thymeleaf" }
+        { "name": "Bootstrap", "icon": "skill-icons:bootstrap" }
       ]
     },
     {
       "title": "Desarrollo del servidor",
       "skills": [
-        { "name": "Java", "icon": "skill-icons:java-dark" },
+        { "name": "Java", "icon": "skill-icons:java-light" },
         { "name": "Spring Boot", "icon": "skill-icons:spring-dark" },
         { "name": "Python", "icon": "skill-icons:python-dark" },
-        { "name": "Django", "icon": "skill-icons:django" }
+        { "name": "Django", "icon": "skill-icons:django" },
+        { "name": "Thymeleaf", "icon": "devicon:thymeleaf" }
       ]
     },
     {
       "title": "Bases de datos",
       "skills": [
-        { "name": "MySQL", "icon": "skill-icons:mysql-dark" },
+        { "name": "MySQL", "icon": "skill-icons:mysql-light" },
         { "name": "H2", "icon": "mdi:database" }
       ]
     },
