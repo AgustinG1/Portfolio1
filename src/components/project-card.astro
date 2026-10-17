@@ -1,130 +1,170 @@
 ---
 import { Icon } from 'astro-icon/components';
-const { project } = Astro.props;
 import { Image } from 'astro:assets';
 import { resolveAssetImage } from '../utils/images';
 
-// Map through the array of image strings from project JSON
-const optimizedImages = await Promise.all(
-  project.images.map(async (imgName: string) => {
-    return await resolveAssetImage(imgName);
-  })
-);
-
-const validImages = optimizedImages.filter(Boolean);
-
-const isSlider = validImages.length > 1;
+const { project } = Astro.props;
+const images = await Promise.all(project.images.map(async (name: string, index: number) => ({
+  image: await resolveAssetImage(name),
+  alt: project.imageAlts?.[index] ?? `${project.title}: captura ${index + 1}`,
+})));
+const validImages = images.filter(item => item.image !== null);
+const featuredTech: string[] = project.featuredTech ?? project.tech.slice(0, 6);
+const otherTech: string[] = project.tech.filter((tech: string) => !featuredTech.includes(tech));
 ---
 
-<div class="project-card group relative flex h-full flex-col bg-accent/5 border border-accent/10 rounded-2xl overflow-hidden hover:border-accent/40 transition-all duration-500">
-  <div class="aspect-video overflow-hidden relative bg-background/50">
-    <div class="absolute inset-0 bg-accent/10 group-hover:bg-transparent transition-colors z-10 pointer-events-none"></div>
-    
-    <div class={`w-full h-full relative ${isSlider ? 'image-slider' : ''}`}>
-      {
-        validImages.length > 0 ? (
-          validImages.map((imgMetadata, index) => (
-            <Image
-              src={imgMetadata}
-              alt={project.imageAlts?.[index] ?? project.title}
-              class={`absolute inset-0 w-full h-full ${project.imageFit === 'contain' ? 'object-contain bg-[#0a0a0a]' : 'object-cover group-hover:scale-110'} transition-all duration-1000 ${index === 0 ? "opacity-100 z-0" : "opacity-0 z-[-1]"}`}
-            />
-          ))
-        ) : (
-          /* Fallback box if array is empty or filenames are missing */
-          <img
-            src="/placeholder.jpeg"
-            alt={`${project.title} placeholder`}
-            class="absolute inset-0 w-full h-full object-cover transition-all duration-1000 group-hover:scale-110"
-          />
-        )
-      }
-    </div>
-    
-    <div class="absolute top-3 right-3 flex gap-2 z-20">
-      {project.platforms.map((p: string) => (
-        <div class="p-1.5 bg-background backdrop-blur-md rounded-lg border border-accent/10 text-maintext">
-          <Icon name={`mdi:${p}`} class="w-4 h-4" />
-        </div>
-      ))}
-    </div>
-  </div>
-
-  <div class="flex flex-1 flex-col p-5 md:p-6 space-y-4">
-    <div class="flex items-start justify-between gap-4">
-      <div class="min-w-0">
-        <span class="text-accent text-[10px] uppercase tracking-widest font-bold">{project.category}</span>
-        <h3 class="text-xl font-heading font-bold text-maintext mt-1 break-words">{project.title}</h3>
+<article class="project-card group min-w-0 flex h-full flex-col overflow-hidden rounded-2xl border border-accent/15 bg-accent/5 transition-colors hover:border-accent/40">
+  <div class="project-gallery relative shrink-0 border-b border-accent/10" aria-label={`Capturas de ${project.title}`}>
+    <div class="relative aspect-video overflow-hidden bg-background/50">
+      {validImages.length ? validImages.map(({ image, alt }, index) => image && (
+        <Image
+          src={image}
+          alt={alt}
+          data-slide
+          data-full-src={image.src}
+          hidden={index !== 0}
+          class={`h-full w-full ${project.imageFit === 'contain' ? 'object-contain bg-[#0a0a0a]' : 'object-cover object-top'}`}
+          widths={[400, 800, 1200]}
+          sizes="(min-width: 1280px) 33vw, (min-width: 768px) 50vw, 100vw"
+        />
+      )) : (
+        <img src={`${import.meta.env.BASE_URL}/placeholder.jpeg`} alt={`Vista previa de ${project.title}`} class="h-full w-full object-cover" />
+      )}
+      <div class="absolute right-3 top-3 flex gap-2">
+        {project.platforms.map((platform: string) => (
+          <span class="rounded-lg border border-white/15 bg-black/75 p-2 text-white" title="Aplicación web">
+            <Icon name={`mdi:${platform}`} class="h-4 w-4" />
+          </span>
+        ))}
       </div>
-      <div class="shrink-0 flex items-center gap-2">
-        {project.github && (
-          <a href={project.github} target="_blank" rel="noopener noreferrer" class="text-accent/75 hover:text-accent transition-colors" aria-label={`GitHub repo for ${project.title}`}>
-            <Icon name="mdi:github" class="w-6 h-6" />
-          </a>
+    </div>
+    {validImages.length > 0 && (
+      <div class="flex min-h-12 items-center justify-between gap-2 px-3" data-gallery-controls hidden>
+        <button type="button" data-enlarge class="gallery-button px-2 text-xs" aria-label={`Ampliar captura de ${project.title}`}>
+          <Icon name="mdi:arrow-expand" class="h-4 w-4" /> Ampliar
+        </button>
+        {validImages.length > 1 && (
+          <div class="flex items-center gap-1">
+            <button type="button" data-previous class="gallery-button" aria-label={`Captura anterior de ${project.title}`}><Icon name="mdi:chevron-left" class="h-5 w-5" /></button>
+            <span data-counter aria-live="polite" aria-atomic="true" class="min-w-10 text-center text-xs tabular-nums text-subtext">1 / {validImages.length}</span>
+            <button type="button" data-next class="gallery-button" aria-label={`Siguiente captura de ${project.title}`}><Icon name="mdi:chevron-right" class="h-5 w-5" /></button>
+          </div>
         )}
-        <a href={project.link} target="_blank" rel="noopener noreferrer" class="text-accent/75 hover:text-accent transition-colors" aria-label={`Live site for ${project.title}`}>
-          <Icon name="mdi:open-in-new" class="w-6 h-6" />
-        </a>
       </div>
-    </div>
-
-    <p class="text-subtext text-sm leading-relaxed text-pretty font-body">
-      {project.description}
-    </p>
-
-    <div class="mt-auto flex flex-wrap gap-2 pt-2">
-      {project.tech.map((t: string) => (
-        <span class="rounded-md text-[10px] px-2 md:px-4 py-1 bg-accent/5 border border-accent/10 text-accent/80  group-hover:border-accent/40 group-hover:text-accent">
-          {t}
-        </span>
-      ))}
-    </div>
+    )}
+    {validImages.length > 0 && (
+      <dialog aria-label={`Captura ampliada de ${project.title}`} class="image-dialog m-auto max-h-[90dvh] w-[min(94vw,1440px)] max-w-none rounded-xl border border-accent/25 bg-background p-3 text-maintext">
+        <form method="dialog" class="mb-2 flex items-center justify-between gap-3">
+          <span class="text-sm font-medium">{project.title}</span>
+          <button class="gallery-button px-3 text-sm" autofocus>Cerrar <Icon name="mdi:close" class="h-5 w-5" /></button>
+        </form>
+        <img data-dialog-image alt="" class="mx-auto max-h-[75dvh] max-w-full object-contain" />
+      </dialog>
+    )}
   </div>
-</div>
+
+  <div class="flex flex-1 flex-col gap-4 p-5 lg:p-6">
+    <header>
+      <p class="text-[10px] font-bold uppercase tracking-widest text-accent">{project.category}</p>
+      <h3 class="mt-2 break-words font-heading text-2xl font-bold leading-tight text-maintext">{project.title}</h3>
+    </header>
+    <div class="text-sm leading-6 text-subtext">
+      <p>{project.summary ?? project.description}</p>
+      {project.summary && (
+        <details class="mt-2">
+          <summary class="detail-toggle">Más sobre el proyecto</summary>
+          <p class="pt-2">{project.description}</p>
+        </details>
+      )}
+    </div>
+
+    <div class="mt-auto border-t border-accent/15 pt-4 md:min-h-40">
+      <p class="mb-3 text-[10px] font-semibold uppercase tracking-widest text-subtext">Tecnologías</p>
+      <ul class="flex flex-wrap gap-2" aria-label={`Tecnologías principales de ${project.title}`}>
+        {featuredTech.map((tech: string) => <li class="tech-tag">{tech}</li>)}
+      </ul>
+      {otherTech.length > 0 && (
+        <details class="mt-3">
+          <summary class="detail-toggle">Ver {otherTech.length} tecnologías más</summary>
+          <ul class="mt-3 flex flex-wrap gap-2" aria-label={`Más tecnologías de ${project.title}`}>
+            {otherTech.map((tech: string) => <li class="tech-tag">{tech}</li>)}
+          </ul>
+        </details>
+      )}
+    </div>
+
+    <footer class="mt-1 flex flex-wrap gap-2 border-t border-accent/15 pt-4">
+      <a href={project.link} target="_blank" rel="noopener noreferrer" class="project-link bg-accent text-background" aria-label={`Ver demo de ${project.title} (abre otra pestaña)`}>
+        Ver demo <Icon name="mdi:open-in-new" class="h-4 w-4" />
+      </a>
+      {project.github && (
+        <a href={project.github} target="_blank" rel="noopener noreferrer" class="project-link border border-accent/25 text-maintext hover:bg-accent/10" aria-label={`Ver código de ${project.title} en GitHub (abre otra pestaña)`}>
+          <Icon name="mdi:github" class="h-4 w-4" /> Código
+        </a>
+      )}
+    </footer>
+  </div>
+</article>
 
 <script>
-  function initSliders() {
-    const sliders = document.querySelectorAll('.image-slider');
-    
-    sliders.forEach(slider => {
-      const images = slider.querySelectorAll('img');
-      if (images.length <= 1) return;
+  function initProjectGalleries() {
+    document.querySelectorAll<HTMLElement>('.project-gallery').forEach(gallery => {
+      if (gallery.dataset.ready) return;
+      gallery.dataset.ready = 'true';
+      const slides = Array.from(gallery.querySelectorAll<HTMLImageElement>('[data-slide]'));
+      const controls = gallery.querySelector<HTMLElement>('[data-gallery-controls]');
+      const counter = gallery.querySelector('[data-counter]');
+      const dialog = gallery.querySelector<HTMLDialogElement>('dialog');
+      const enlarged = gallery.querySelector<HTMLImageElement>('[data-dialog-image]');
+      let current = 0;
+      if (controls) controls.hidden = false;
 
-      let currentIndex = 0;
-      setInterval(() => {
-        // Hide current
-        images[currentIndex].classList.remove('opacity-100', 'z-0');
-        images[currentIndex].classList.add('opacity-0', 'z-[-1]');
-        
-        // Move to next
-        currentIndex = (currentIndex + 1) % images.length;
-        
-        // Show next
-        images[currentIndex].classList.remove('opacity-0', 'z-[-1]');
-        images[currentIndex].classList.add('opacity-100', 'z-0');
-      }, 3500);
+      const show = (direction: number) => {
+        slides[current].hidden = true;
+        current = (current + direction + slides.length) % slides.length;
+        slides[current].hidden = false;
+        if (counter) counter.textContent = `${current + 1} / ${slides.length}`;
+      };
+      gallery.querySelector('[data-previous]')?.addEventListener('click', () => show(-1));
+      gallery.querySelector('[data-next]')?.addEventListener('click', () => show(1));
+      gallery.querySelector('[data-enlarge]')?.addEventListener('click', () => {
+        if (!dialog || !enlarged) return;
+        enlarged.src = slides[current].dataset.fullSrc ?? slides[current].src;
+        enlarged.alt = slides[current].alt;
+        dialog.showModal();
+      });
     });
   }
-
-  initSliders();
-  document.addEventListener('astro:after-swap', initSliders);
+  initProjectGalleries();
+  document.addEventListener('astro:page-load', initProjectGalleries);
 </script>
 
-<style is:global>
-  .project-card {
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(40px);
-    transition: 
-      opacity 0.8s ease-out, 
-      transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-      visibility 0.8s;
-    will-change: transform, opacity;
+<style>
+  .tech-tag {
+    border: 1px solid color-mix(in srgb, var(--color-accent), transparent 82%);
+    border-radius: 6px;
+    padding: 4px 8px;
+    font-size: 11px;
+    line-height: 1.5;
+    color: var(--color-maintext);
+    background: color-mix(in srgb, var(--color-accent), transparent 94%);
+    overflow-wrap: anywhere;
   }
-
-  .project-card.reveal {
-    opacity: 1 !important;
-    visibility: visible !important;
-    transform: translateY(0) !important;
+  .gallery-button, .project-link {
+    display: inline-flex;
+    min-height: 44px;
+    min-width: 44px;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    border-radius: 8px;
+    cursor: pointer;
   }
+  .gallery-button { color: var(--color-subtext); }
+  .gallery-button:hover { color: var(--color-maintext); background: color-mix(in srgb, var(--color-accent), transparent 90%); }
+  .project-link { padding: 8px 14px; font-size: 13px; font-weight: 600; }
+  .detail-toggle { cursor: pointer; padding-block: 10px; font-size: 12px; font-weight: 500; color: var(--color-accent); }
+  a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 4px; }
+  .image-dialog::backdrop { background: rgb(0 0 0 / 80%); }
+  .project-gallery [hidden] { display: none; }
 </style>

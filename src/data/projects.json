@@ -1,7 +1,7 @@
 [
   {
     "title": "Burger Fenix",
-    "description": "Landing estática para un restaurante de hamburguesas, con un diseño visual limpio, secciones claras y animaciones sutiles. Presenta el menú, la ubicación y el contacto en un[...]",
+    "description": "Sitio web para un restaurante de hamburguesas, con menú, ubicación y contacto. Diseño adaptable con secciones claras y animaciones sutiles.",
     "images": ["ProjectFenix1.png", "ProjectFenix2.png"],
     "tech": ["HTML", "CSS", "Sass", "Bootstrap"],
     "platforms": ["web"],
@@ -10,9 +10,11 @@
   },
   {
     "title": "TaskScheduler",
+    "summary": "Planificación semanal de tareas con criterios de compatibilidad y rotación. Acceso con Auth0, datos privados por usuario, historial y exportación a Excel.",
     "description": "Aplicación web para organizar áreas, personal y equipos y generar planillas de hasta 52 semanas según compatibilidad y rotación. Incluye registro e inicio de sesión con Auth0, datos privados por usuario, historial y exportación a Excel. El planificador utiliza el algoritmo húngaro para priorizar la cobertura y reducir repeticiones. Desplegada en Render con MySQL en Aiven.",
     "images": ["task-panel.png", "task-acceso.png", "task-historial.png"],
     "imageFit": "contain",
+    "featuredTech": ["Java 17", "Spring Boot", "Auth0", "Thymeleaf", "MySQL", "Docker"],
     "imageAlts": ["TaskScheduler: panel con módulos y esquema de asignación de tareas", "TaskScheduler: acceso personal y registro mediante Auth0", "TaskScheduler: historial de planillas con descarga de Excel"],
     "tech": [
       "Java 17", "Spring Boot", "Spring MVC", "Spring Security",
@@ -31,7 +33,7 @@
   },
   {
     "title": "Blog de Recetas",
-    "description": "Blog de recetas donde los usuarios pueden explorar recetas caseras por categorías y ver el detalle de cada receta. Para añadir una receta es necesario registrarse e iniciar s[...]",
+    "description": "Blog de recetas caseras organizadas por categorías. Permite consultar cada receta y publicar nuevas preparaciones mediante registro e inicio de sesión.",
     "images": ["Blog-1.png", "Blog-2.png"],
     "tech": ["Django", "Python", "HTML", "Bootstrap", "CKEditor"],
     "platforms": ["web"],
