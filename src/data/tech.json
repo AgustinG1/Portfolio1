@@ -1,42 +1,53 @@
 {
   "categories": [
-    
     {
-      "title": "Frontend",
+      "title": "Desarrollo de interfaces",
       "skills": [
-        
-        { "name": "HTML", "level": 2, "icon": "skill-icons:html" },
-        { "name": "CSS", "level": 2, "icon": "skill-icons:css" }
-        
+        { "name": "HTML", "icon": "skill-icons:html" },
+        { "name": "CSS", "icon": "skill-icons:css" },
+        { "name": "JavaScript", "icon": "skill-icons:javascript" },
+        { "name": "React", "icon": "skill-icons:react-dark" },
+        { "name": "Bootstrap", "icon": "skill-icons:bootstrap" },
+        { "name": "Thymeleaf", "icon": "devicon:thymeleaf" }
       ]
     },
     {
-      "title": "Backend",
+      "title": "Desarrollo del servidor",
       "skills": [
-        { "name": "Python", "level": 1, "icon": "skill-icons:python-dark" },
-        { "name": "Java", "level": 1, "icon": "skill-icons:java-dark" }
-       
+        { "name": "Java", "icon": "skill-icons:java-dark" },
+        { "name": "Spring Boot", "icon": "skill-icons:spring-dark" },
+        { "name": "Python", "icon": "skill-icons:python-dark" },
+        { "name": "Django", "icon": "skill-icons:django" }
       ]
     },
     {
-      "title": "Database",
+      "title": "Bases de datos",
       "skills": [
-        { "name": "MySQL", "level": 3, "icon": "skill-icons:mysql-dark" },
-        { "name": "Spring", "level": 2, "icon": "skill-icons:spring-dark" }
-        
+        { "name": "MySQL", "icon": "skill-icons:mysql-dark" },
+        { "name": "H2", "icon": "mdi:database" }
       ]
     },
     {
-      "title": "Cloud & Tools",
+      "title": "Autenticación",
       "skills": [
-        { "name": "AWS", "level": 2, "icon": "skill-icons:aws-dark" },
-        { "name": "Docker", "level": 3, "icon": "skill-icons:docker" },
-        { "name": "Jenkins", "level": 2, "icon": "skill-icons:jenkins-dark" },
-        { "name": "JWT", "level": 2, "icon": "devicon:jwt" },
-        { "name": "Oracle DataModeler", "level": 1, "icon": "mdi:database-cog" },
-        { "name": "Postman", "level": 3, "icon": "skill-icons:postman" },
-          { "name": "Git", "level": 2, "icon": "skill-icons:git" },
-          { "name": "Azure", "level": 2, "icon": "devicon:azure" }
+        { "name": "Spring Security", "icon": "mdi:shield-lock-outline" },
+        { "name": "Auth0", "icon": "mdi:shield-account" },
+        { "name": "JWT", "icon": "devicon:jwt" }
+      ]
+    },
+    {
+      "title": "Infraestructura y herramientas",
+      "skills": [
+        { "name": "AWS", "icon": "skill-icons:aws-dark" },
+        { "name": "Azure", "icon": "devicon:azure" },
+        { "name": "Docker", "icon": "skill-icons:docker" },
+        { "name": "Jenkins", "icon": "skill-icons:jenkins-dark" },
+        { "name": "Git", "icon": "skill-icons:git" },
+        { "name": "GitHub", "icon": "mdi:github" },
+        { "name": "Maven", "icon": "skill-icons:maven-dark" },
+        { "name": "Vite", "icon": "skill-icons:vite-dark" },
+        { "name": "Postman", "icon": "skill-icons:postman" },
+        { "name": "Oracle Data Modeler", "icon": "mdi:database-cog" }
       ]
     }
   ]
