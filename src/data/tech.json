@@ -2,7 +2,7 @@
   "primaryStack": ["Java", "Spring Boot", "MySQL"],
   "categories": [
     {
-      "title": "Desarrollo de interfaces",
+      "title": "Frontend",
       "skills": [
         { "name": "HTML", "icon": "skill-icons:html" },
         { "name": "CSS", "icon": "skill-icons:css" },
@@ -12,7 +12,7 @@
       ]
     },
     {
-      "title": "Desarrollo del servidor",
+      "title": "Backend",
       "skills": [
         { "name": "Java", "icon": "skill-icons:java-light" },
         { "name": "Spring Boot", "icon": "skill-icons:spring-dark" },
