@@ -1,7 +1,9 @@
 ---
 import '../styles/global.css'
 import { SITE_CONFIG } from '../config.ts';
-import favicon from '../assets/Favicon.png';
+import favicon from '../assets/favicon.svg';
+import faviconPng from '../assets/favicon-32.png';
+import touchIcon from '../assets/apple-touch-icon.png';
 
 interface Props {
   title: string;
@@ -11,6 +13,7 @@ const { title } = Astro.props;
 
 const baseTheme = SITE_CONFIG.baseTheme;
 const defaultTheme = `${baseTheme}-dark`;
+const basePath = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <!doctype html>
@@ -18,7 +21,10 @@ const defaultTheme = `${baseTheme}-dark`;
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/png" href={favicon.src} />
+    <link rel="icon" type="image/x-icon" href={`${basePath}/favicon.ico?v=ag-1`} sizes="16x16 32x32 48x48 64x64" />
+    <link rel="icon" type="image/png" href={faviconPng.src} sizes="32x32" />
+    <link rel="icon" type="image/svg+xml" href={favicon.src} sizes="any" />
+    <link rel="apple-touch-icon" href={touchIcon.src} sizes="180x180" />
     <title>{title}</title>
 
     <!-- THEME TOGGLE SCRIPT -->
